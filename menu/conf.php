@@ -1,7 +1,7 @@
 <?php
 //vajaliku häälestused
 
-define('BASE_DIR', ''); // define('BASE_DIR', '../');
+define('BASE_DIR', './'); // define('BASE_DIR', '../');
 
 //tegelikult peavad olema conf.php failis
 //---------------------------------------
@@ -18,13 +18,11 @@ error_reporting(E_ALL);
 define('SITENAME', 'Söökla menüü');
 
 
-
 define('MODEL_DIR', BASE_DIR.'model/');
 define('TMPL_DIR', BASE_DIR.'views/');
 define('LIB_DIR', BASE_DIR.'lib/');
 define('LANG_DIR', BASE_DIR.'lang/');
 define('CONTROLLER_DIR', BASE_DIR.'controllers/');
-
 
 //defineerime ka rollide konstandid
 define('ROLE_NONE', 0);
@@ -47,11 +45,10 @@ require_once(MODEL_DIR.'Session.php');
 
 require_once(LIB_DIR.'utils.php');
 
-require_once(BASE_DIR.'dbconf.php');
+require_once(BASE_DIR.'db_conf.php');
 
 //kui kasutaja tuleb esmakordselt lehele, milline keel näidatakse vaikimisi
 define('DEFAULT_LANG', 'et');
-
 //defineerime keelekoodid
 $siteLangs = array(
     'et' => 'estonian',
