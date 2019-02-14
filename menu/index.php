@@ -15,6 +15,7 @@ $contentTmpl = new Template('content');
 $courseCardTmpl = new Template('course_card');
 
 $courseCardHeaderTmpl = new Template('course_card_header');
+$courseCardDataTmpl = new Template('course_card_data');
 
 $courseNames = array(
     'praed' => 'fa-utensils',
@@ -26,6 +27,9 @@ foreach ($courseNames as $courseName => $courseIcon){
     $courseCardHeaderTmpl->set('course_name', $courseName);
     $courseCardHeaderTmpl->set('course_icon', $courseIcon);
     $courseCardTmpl->set('course_card_header', $courseCardHeaderTmpl->parse());
+
+    $courseCardDataTmpl->set('course_name', $courseName);
+    $courseCardTmpl->set('course_card_data', $courseCardDataTmpl->parse());
     $contentTmpl->add('course_cards', $courseCardTmpl->parse());
 }
 
