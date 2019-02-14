@@ -8,8 +8,11 @@ print_r($sess);
 echo '</pre>';*/
 
 $mainTmpl = new Template('main');
-
 $mainTmpl->set('title', 'Menu Application');
+
+$contentTmpl = new Template('content');
+
+$mainTmpl->set('content', $contentTmpl->parse());
 
 $mainTmplContent = $mainTmpl->parse();
 echo $mainTmplContent;
