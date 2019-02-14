@@ -10,7 +10,6 @@ echo '</pre>';*/
 $mainTmpl = new Template('main');
 
 $mainTmpl->set('title', 'Menu Application');
-$mainTmpl->set('page title', 'Tartu KHK Menu');
 
 $mainTmplContent = $mainTmpl->parse();
 echo $mainTmplContent;
