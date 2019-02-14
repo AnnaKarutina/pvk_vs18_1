@@ -12,6 +12,13 @@ $mainTmpl->set('title', 'Menu Application');
 
 $contentTmpl = new Template('content');
 
+$courseCardTmpl = new Template('course_card');
+
+$contentTmpl->add('course_cards', $courseCardTmpl->parse());
+$contentTmpl->add('course_cards', $courseCardTmpl->parse());
+$contentTmpl->add('course_cards', $courseCardTmpl->parse());
+$contentTmpl->add('course_cards', $courseCardTmpl->parse());
+
 $mainTmpl->set('content', $contentTmpl->parse());
 
 $mainTmplContent = $mainTmpl->parse();
