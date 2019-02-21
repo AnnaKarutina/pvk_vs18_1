@@ -12,12 +12,7 @@ $mainTmpl->set('title', 'Menu Application');
 
 $contentTmpl = new Template('content');
 
-$courseCardTmpl = new Template('course_card');
 
-$courseCardHeaderTmpl = new Template('course_card_header');
-$courseCardDataTmpl = new Template('course_card_data');
-
-$courseDatalistTmpl = new Template('course_data_list');
 
 $courses = array(
     array(
@@ -35,7 +30,7 @@ $courses = array(
                 'dish_description' => 'praetud kana, lisand, salat, leib',
                 'dish_price' => 2.50,
                 'discount' => 2.13
-            )
+            ),
         )
     ),
     array(
@@ -55,12 +50,27 @@ $courses = array(
 
 
 foreach ($courses as $course => $courseData){
+    $courseCardTmpl = new Template('course_card');
+    $courseCardHeaderTmpl = new Template('course_card_header');
+    $courseCardDataTmpl = new Template('course_card_data');
+
     $courseCardHeaderTmpl->set('course_name', $courseData['name']);
     $courseCardHeaderTmpl->set('course_icon', $courseData['icon']);
     $courseCardTmpl->set('course_card_header', $courseCardHeaderTmpl->parse());
 
     $courseCardDataTmpl->set('course_name', $courseData['name']);
-    $courseCardDataTmpl->set('course_data_list', $courseDatalistTmpl->parse());
+
+    $courseDatalistTmpl = new Template('course_data_list');
+    foreach ($courseData['data'] as $dish => $dishData){
+        $courseDatalistTmpl->set('dish_name', $dishData['dish_name']);
+        $courseDatalistTmpl->set('dish_description', $dishData['dish_description']);
+        $courseDatalistTmpl->set('dish_price', $dishData['dish_price']);
+        $courseDatalistTmpl->set('discount', $dishData['discount']);
+
+        $courseCardDataTmpl->add('course_data_list', $courseDatalistTmpl->parse());
+    }
+
+
     $courseCardTmpl->set('course_card_data', $courseCardDataTmpl->parse());
 
 
