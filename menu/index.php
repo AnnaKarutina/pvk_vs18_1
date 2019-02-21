@@ -19,7 +19,7 @@ $courseCardDataTmpl = new Template('course_card_data');
 
 $courseDatalistTmpl = new Template('course_data_list');
 
-$courseNames = array(
+$courses = array(
     array(
         'name' => 'praed',
         'icon' => 'fa-utensils',
@@ -54,12 +54,12 @@ $courseNames = array(
 
 
 
-foreach ($courseNames as $courseName => $courseIcon){
-    $courseCardHeaderTmpl->set('course_name', $courseName);
-    $courseCardHeaderTmpl->set('course_icon', $courseIcon);
+foreach ($courses as $course => $courseData){
+    $courseCardHeaderTmpl->set('course_name', $courseData['name']);
+    $courseCardHeaderTmpl->set('course_icon', $courseData['icon']);
     $courseCardTmpl->set('course_card_header', $courseCardHeaderTmpl->parse());
 
-    $courseCardDataTmpl->set('course_name', $courseName);
+    $courseCardDataTmpl->set('course_name', $courseData['name']);
     $courseCardDataTmpl->set('course_data_list', $courseDatalistTmpl->parse());
     $courseCardTmpl->set('course_card_data', $courseCardDataTmpl->parse());
 
