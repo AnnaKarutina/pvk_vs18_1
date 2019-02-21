@@ -62,18 +62,13 @@ foreach ($courses as $course => $courseData){
 
     $courseDatalistTmpl = new Template('course_data_list');
     foreach ($courseData['data'] as $dish => $dishData){
-        $courseDatalistTmpl->set('dish_name', $dishData['dish_name']);
-        $courseDatalistTmpl->set('dish_description', $dishData['dish_description']);
-        $courseDatalistTmpl->set('dish_price', $dishData['dish_price']);
-        $courseDatalistTmpl->set('discount', $dishData['discount']);
-
+        foreach ($dishData as $name=>$value){
+            $courseDatalistTmpl->set($name, $dishData[$name]);
+        }
         $courseCardDataTmpl->add('course_data_list', $courseDatalistTmpl->parse());
     }
 
-
     $courseCardTmpl->set('course_card_data', $courseCardDataTmpl->parse());
-
-
 
     $contentTmpl->add('course_cards', $courseCardTmpl->parse());
 }
